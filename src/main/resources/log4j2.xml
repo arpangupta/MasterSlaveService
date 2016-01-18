@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="trace" name="server_monitoring" packages="">
+  <appenders>
+    <!-- http://logging.apache.org/log4j/2.x/manual/appenders.html -->
+    <RollingFile name="monitoringLogs" fileName="logs/monitoring_logs.log" 
+    filePattern="logs/$${date:yyyy-MM-dd}/monitoring-%d{yyyy-MM-dd-HH}.log">
+      <PatternLayout>
+        <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+      </Policies>
+      <!-- <DefaultRolloverStrategy max="100"/> -->
+    </RollingFile>
+  </appenders>
+  <loggers>
+    <root level="trace">
+      <appender-ref ref="monitoringLogs"/>
+    </root>
+  </loggers>
+</configuration>
